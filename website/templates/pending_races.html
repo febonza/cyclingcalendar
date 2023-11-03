@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+Pending Races
+{% endblock %}
+
+{% block main %}
+<!-- <form method="POST">
+    <div class="form-group mb-3">
+        <label for="formCategorySelection">Category</label>
+        <select class="form-control" name="categorySelection">
+            <option>All</option>
+            <option>World Tour</option>
+            <option>Others</option>
+        </select>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>    
+    </div>
+</form> -->
+<div class="container">
+    
+        <div class="col-12 mb-4">
+            <h2>PENDING RACES</h2>
+            <div class="row">
+                {% for _ in races %}
+                    <div class="col-sm-3 mb-3">
+                        <div class="card">
+                            <div class="card-sl">
+                                <form action="#" method="post">
+                                    <input type="hidden" name="raceId" value="{{ _['id'] }}" class="form-control form-control-lg"/>
+                                    <div class="card-image">
+                                        <img src="/static/race_images/{{ _['picture_race'] }}" />
+                                    </div>
+                                    <div class="card-heading">
+                                        {{ _['race_name'] }}
+                                    </div>
+                                    <div class="card-text">
+                                        {{ _['race_date'] }}
+                                    </div>
+                                    <div class="card-text">
+                                        {{ _['race_local'] }}
+                                    </div>
+                                    <div class="card-text">
+                                        {{ _['category'] }}
+                                    </div>
+                                    <a href="#" class="card-button"> Website</a>
+
+                                </form>
+                                <form action="/approve_race" method="post">
+                                    <input type="hidden" name="raceId" value="{{ _['id'] }}" class="form-control form-control-lg"/>
+                                    <input type="hidden" name="approveRace" value="{{ _['id'] }}" class="form-control form-control-lg"/>
+                                    <button type="submit" class="card-button-add">Approve</a>
+                                </form>
+                                <form action="/reject_race" method="post">
+                                    <input type="hidden" name="raceId" value="{{ _['id'] }}" class="form-control form-control-lg"/>
+                                    <input type="hidden" name="rejectRace" value="{{ _['id'] }}" class="form-control form-control-lg"/>
+                                    <button type="submit" class="card-button-remove">Reject</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
